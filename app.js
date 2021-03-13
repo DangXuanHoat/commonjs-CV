@@ -16,7 +16,13 @@ const PORT = process.env.PORT || 3000
 app.use(morgan("dev"))
 app.set('view engine', 'ejs');
 app.set('views',__dirname + '/resources/views')
+
 app.use(express.static(__dirname+'/public'))
+app.use('/css',express.static(__dirname+'/public/assets/css'))
+app.use('/js',express.static(__dirname+'/public/assets/js'))
+app.use('/img',express.static(__dirname+'/public/assets/img'))
+app.use('/libs',express.static(__dirname+'/public/libs'))
+
 app.use(expressLayouts)
 app.set('layout', 'layouts/page-layout');
 /***
