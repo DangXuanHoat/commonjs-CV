@@ -17,6 +17,10 @@ const http =  (function(){
 
 const server = http.createServer(app)
 /**
+ * Connect database!
+ */
+require('../../app/database/index.js')
+/**
  * handler route
  */
 require('../../app/route/root.js')(app)

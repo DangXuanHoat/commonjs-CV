@@ -1,11 +1,8 @@
 const express = require('express')
 const routers =  express.Router()
-routers.get('/auth',(req,res)=>{
-    return res.render('page/login-page',{layout:'layouts/auth-layout'})
-})
-routers.get('/auth/login',(req,res)=>{
-    return res.render('page/login-page',{layout:'layouts/auth-layout'})
-})
+const authWebController = require('./../../controler/auth.controller')
+routers.get('/auth',authWebController.index)
+routers.get('/auth/login',authWebController.index)
 routers.get('/auth/resgister/a/b/c',(req,res)=>{
     return res.render('page/login-page',{layout:'layouts/auth-layout'})
 })
