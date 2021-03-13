@@ -1,7 +1,6 @@
 const express = require('express')
 const routers =  express.Router()
-const cors = require('cors')
 routers.get('/page',(req,res)=>{
-    return res.render('layouts/page')
+    return res.render('page/landing-page')
 })
 module.exports = routers

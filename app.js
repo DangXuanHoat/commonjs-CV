@@ -4,8 +4,8 @@ const morgan = require('morgan')
 const cors = require('cors')
 const bodyParser = require("body-parser")
 const dotenv = require('dotenv')
-const path = require('path')
-const { use } = require('chai')
+const session = require('express-session') 
+const expressLayouts  = require('express-ejs-layouts')
 const app = express()
 
 /**
@@ -16,9 +16,17 @@ const PORT = process.env.PORT || 3000
 app.use(morgan("dev"))
 app.set('view engine', 'ejs');
 app.set('views',__dirname + '/resources/views')
-// app.set('layout', 'layouts');
-// app.use(ejs_layouts)
-app.use(express.static('public'))
+app.use(express.static(__dirname+'/public'))
+app.use(expressLayouts)
+app.set('layout', 'layouts/page-layout');
+/***
+ * Session config
+ */
+app.use(session({
+    resave: true, 
+    saveUninitialized: true, 
+    secret: 'bluedragon1998', 
+    cookie: { maxAge: 60000 }}));
 /**
  * define
  */
